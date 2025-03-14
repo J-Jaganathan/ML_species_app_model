@@ -26,7 +26,7 @@ with st.sidebar:
   bill_depth_mm = st.slider('Flipper Length (mm)',13.1,21.5,17.2)
   flipper_length_mm = st.slider('Flipper length (mm)',172.0,231.0,201.0)
   body_mass_g = st.slider("Body mass (g)",2700.00, 6300.0, 4267.0)
-  gender = st.selectbox('Gender',('male','female'))
+
   data = {'island': island,
           'bill_length_mm': bill_length_mm,
           'flipper_length_mm': flipper_length_mm,
