@@ -8,7 +8,7 @@ with st.expander('Data'):
   df
 
   st.write('xxXxx');
-  X = df.drop('species',axis=1')
+  X = df.drop('species',axis=1)
   X
 
   st.write('xxYxx');
