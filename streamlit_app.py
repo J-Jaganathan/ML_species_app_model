@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-st.title('🎈 App Name')
+st.title('Machine Leaning Model Builder')
 st.info('This is the app that builds a machine learning model')
 with st.expander('Data'):
   st.write('Raw Data')
@@ -52,7 +52,6 @@ def target_encode(val):
   return target_mapper[val]
 
 y = Y.apply(target_encode)
-y
 
 with st.expander("Data Preparation"):
   st.write("**Encoded X(input penguin)**")
