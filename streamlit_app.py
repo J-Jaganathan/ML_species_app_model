@@ -35,6 +35,11 @@ with st.sidebar:
           'sex': gender}
   input_df = pd.DataFrame(data, index =[0])
   input_penguins = pd.concat([input_df,X], axis=0)
+with st.expander('Input Features'):
+st.write("**Input Penguins**")
+input_df
+st.write("**Combined penguins data**")
+input_penguins
 #X encoded
 encode = ['island','sex']
 df_penguins = pd.get_dummies(input_penguins,prefix=encode)
@@ -49,10 +54,8 @@ def target_encode(val):
 y = Y.apply(target_encode)
 y
 
-with st.expander('Input Features'):
-  st.write("**Input Penguins**")
-  input_df
-  st.write("**Combined penguins data**")
-  input_penguins
-  st.write("**Encoded input penguin**")
+with st.expander("Data Preparation"):
+  st.write("**Encoded X(input penguin)**")
   input_row
+  st.write("**Encoded y**")
+  y
