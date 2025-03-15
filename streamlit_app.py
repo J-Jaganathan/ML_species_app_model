@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
-st.title('Machine Learning Model Builder')
-st.info('This is the app that builds a machine learning model')
+st.title('Machine Learning App')
+st.info('This is the web-app that predicts output of classification\n of species of penguin using a machine learning model')
 with st.expander('Data'):
   st.write('Raw Data')
   df = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/refs/heads/master/penguins_cleaned.csv')
