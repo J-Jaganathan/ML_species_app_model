@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
-st.title('Machine Leaning Model Builder')
+from sklearn.ensemble import RandomForestClassifier
+
+st.title('Machine Learning Model Builder')
 st.info('This is the app that builds a machine learning model')
 with st.expander('Data'):
   st.write('Raw Data')
@@ -17,7 +19,7 @@ with st.expander('Data'):
 
 with st.expander('Data Visualization'):
   st.scatter_chart(data=df,x = 'bill_length_mm', y='body_mass_g', color='species')
-
+#Input Features
 with st.sidebar:
   st.header('Input features')
   island = st.selectbox('Island',('Biscoe','Dream','Torgersen'))
@@ -40,9 +42,11 @@ with st.expander('Input Features'):
   input_df
   st.write("**Combined penguins data**")
   input_penguins
+#Data Preparation
 #X encoded
 encode = ['island','sex']
 df_penguins = pd.get_dummies(input_penguins,prefix=encode)
+xx = df_penguins[1:]
 input_row = df_penguins[:1]
 #Y encoded
 target_mapper = {'Adelie' : 0,
@@ -58,3 +62,13 @@ with st.expander("Data Preparation"):
   input_row
   st.write("**Encoded y**")
   y
+
+#Model training and inference
+## Train the ML model
+clf = RandomForestClassifier()
+clf.fit(xx,y);
+
+##Apply model to make predictions
+prediction = clf.predict(input_row)
+prediction_probe = clf.predict_probe(input_row)
+prediction_probe
