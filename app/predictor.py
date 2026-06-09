@@ -1,14 +1,29 @@
-from anyio import Path
+import os
 import joblib
 import pandas as pd
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+import os
 
-MODEL_PATH = BASE_DIR / "artifacts" / "model.pkl"
-ENCODER_PATH = BASE_DIR / "artifacts" / "encoder.pkl"
+BASE_DIR = os.path.dirname(
+    os.path.dirname(
+        os.path.abspath(__file__)
+    )
+)
 
+MODEL_PATH = os.path.join(
+    BASE_DIR,
+    "artifacts",
+    "model.pkl"
+)
+
+ENCODER_PATH = os.path.join(
+    BASE_DIR,
+    "artifacts",
+    "encoder.pkl"
+)
 model = joblib.load(MODEL_PATH)
 encoder = joblib.load(ENCODER_PATH)
+
 
 def preprocess(input_data: dict):
     df = pd.DataFrame([input_data])
