@@ -1,9 +1,14 @@
+from anyio import Path
 import joblib
 import pandas as pd
 
-# Load artifacts once at startup
-model = joblib.load("artifacts\model.pkl")
-encoder = joblib.load("artifacts\encoder.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+MODEL_PATH = BASE_DIR / "artifacts" / "model.pkl"
+ENCODER_PATH = BASE_DIR / "artifacts" / "encoder.pkl"
+
+model = joblib.load(MODEL_PATH)
+encoder = joblib.load(ENCODER_PATH)
 
 def preprocess(input_data: dict):
     df = pd.DataFrame([input_data])
