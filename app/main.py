@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from app.predictor import predict
-
 from typing import Literal
+from fastapi.middleware.cors import CORSMiddleware
 
 class PenguinInput(BaseModel):
     island: Literal["Biscoe", "Dream", "Torgersen"]
@@ -13,6 +13,14 @@ class PenguinInput(BaseModel):
     sex: Literal["male", "female"]
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/predict")
 def predict_species(data: PenguinInput):
